@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "happyboard-123",
+  "private_key_id": "1b1389f288eb2ecedf01e8e2aefbb04658bfacfe",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDRCyeAfECQRta4\nqPV+aKdBed2FmFT0ibINenQ1kJZ/+zRyR3Dl5BlcHU4tMoIBFAb9AEYuyJSD8Wv7\nw761IYLBAx1xZjBceu0Uuho3sIYgJ+A+G4nkmLx96YXLLx8FCz/4YgX/oKueeQTE\nWCIW+0kM4ziCAqDvcWIu8Xt2ZTu8g0oJRm1qrr/Kv1oR4ZDCgSdi4CH2ah2Cbfks\nftFgrrX/frqaFYZ1cCUkHA6xpZFTKi+fCcJ+ZFhcSW44WRiEQbPjgpqXboNqA80P\nSj8j2W66wvyR+ulv3YZcv/7FXe+PW6cXFubArmgHVl6PEiTsdNg31e3mh/Xqjd2N\nhQsiBLZjAgMBAAECggEATLk40tYHxkxRo63TiIU1mfj13oIV8DiXgo3mmABM1IUo\n7yacX6vzyNSyrDEE+QtWM0aF+8a/h5u0o89or8cwW9HeXRACAPdXC4vwcm8WEzg/\ne9wUpLOQPvBWHEhbrLi/zlR/2h4ozv2gy8WDIYcx/QpqY4E+exNU02DrDP3DyoCF\nfJo6BG3HGWElfmVtpo0f2uzF8dmz+8yqGw2u8+hOXerAnimQlBZtB3hZF4rR3Wj/\n2JwsARUir/kRMkicVLJymthwZf1wx0MxGNE2lzMco/Pk9ZQvvADTzFp2khbs4Uxw\nXGzdvmfzcnpwx7we6TviwcXVg4lWmISOKor1zW7V4QKBgQDnozrCJTXPbB0GVV2i\nx7Rh9alUHwAh04bhZMHeeTPRoT2VZvl/xMvn3xQIgt+pTyHfwpQJAYimDRkOOriP\nJEzKvFsLbI/PhFyrfhM/2BdvR3jto73Wt5P0UDh3gL6X7J1eXaJoLT4g6yc5yp9W\nn1T5TuJDIg+9gPNz4H9A+yExoQKBgQDnB5ZS8aaaKQBu7xjFSV+xU6+EiBR2qu5q\njweHeTCXPIU49uk66c4EV3danqGexMGdDaKoaI4njQLXuFf2EAZ1LzCB4sViuKDS\nRD9B1Mnxy3Xa3vbiiYmgjahN3AYNZ3VucyU2nxXQd/mz4ZLsucUSEaOJ4zEpTm96\nKoMfYbixgwKBgAf1p/M77BlwkZ7CGDGbwysKkgL9/bcr2ZqtJ6xJZepyK/eSTkiB\nrrANDlcsiBr9SSCzQvr8PoHWOWIvyl/A05Kz3j0KQfbTiYurDWZIOqXsQs+HrOJP\n9JmUmBwjJGl8C/xOI2KJC3V+Hx7xQ4BqgTT/7O55oSjV4Ye90yGcf4uBAoGASsz/\nE93fxjwOQtyxFXdbP0vMIUn57i4LwX6LvoYzgFP9AmOXQhbfODKllzaTN5eW5GW8\ny3AGzrFuQTATcrzfimN7/iHRLNSAZXPpU0Q1Gk942iOkpdZINC6JVqQtZXug3uDz\nJIs/gd7Gf0JC0tiXAPGrFIL1sN0PZOuMxsVaCkcCgYEA4AqCIAF9uI7SrErf909t\nLZgl2rs8RdWc82Lr4tpTbN63pF01mEOVM+QS4zoi+j+q7d4Tiw4tee2n323DiSaq\nrGHh/9S3bzgtdfcXmRtukvhJ84QPtva4MOBp6o9J8FxSi91qVozRjzXse1oASq/+\nuxtqmgK00Z3pJlJRrZ8/uGo=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-gwiyr@happyboard-123.iam.gserviceaccount.com",
+  "client_id": "100631681326862409536",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-gwiyr%40happyboard-123.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
