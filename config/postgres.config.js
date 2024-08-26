@@ -9,12 +9,12 @@ const dev = {
     database: process.env.DEV_POSTGRES_DB || 'hb',
     port: process.env.DEV_POSTGRES_PORT || '5455',
     dialect: 'postgres',
-    dialectOptions: {
-        ssl: {
-            require: true,
-            rejectUnauthorized: false,
-        }
-    }
+    // dialectOptions: {
+    //     ssl: {
+    //         require: true,
+    //         rejectUnauthorized: false,
+    //     }
+    // }
 }
 
 const prod = {
