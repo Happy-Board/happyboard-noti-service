@@ -1,0 +1,29 @@
+name: Deploy Noti Service
+
+on:
+  push: 
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+      - name: Login to docker hub
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}       
+      - name: Build docker image
+        run: docker build -t duymt3/happyboard-noti .  
+      - name: Publish image to docker hub
+        run: docker push duymt3/happyboard-noti:latest
+  # deploy:
+  #   needs: build
+  #   runs-on: cicd-be
+  #   steps:
+  #     - name: Pull image from docker hub
+  #       run: docker pull duymt3/happyboard-noti:latest
+  #     - name: Delete old container
+  #       run: docker rm -f happyboard-noti-container
+  #     - name: Run docker container
+  #       run: docker run -d -it -p 8001:8001 --name happyboard-noti-container duymt3/happyboard-noti:latest
