@@ -1,5 +1,5 @@
 const amqp = require('amqplib')
-const rabbitmq = require('../../config/rabbitmq.config')
+const { rabbitmq }  = require('../../config/rabbitmq.config')
 
 const getRabbitMQInstance = async () => {
     const connection = await amqp.connect(rabbitmq)
