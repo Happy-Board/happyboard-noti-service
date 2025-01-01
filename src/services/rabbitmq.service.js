@@ -56,7 +56,8 @@ class MessageQueue {
                 })
             }
         } catch (error) {
-            console.error(`Error in receiveMQ: ${error.message}`)
+            console.log(`Error in receiveMQ: ${error}`);
+            // console.error(`Error in receiveMQ: ${error.message}`)
         }
     }
 }

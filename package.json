@@ -4,8 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "dev": "node --watch server.js",
-    "nodemon": "nodemon server.js"
+    "start:dev": "node --watch server.js",
+    "start:prod": "node dist/server.js"
   },
   "keywords": [],
   "author": "",

@@ -10,6 +10,7 @@ class FirebaseService {
         try {
             const { sender, receiver, target, action, metadata = {} } = msg
             const tokens = await findTokenDeviceByUserId(receiver)
+            if(!tokens.length) throw new Error('No token found')
             let receiveTokens = tokens.reduce((acc, current) => {
                 if (current.deviceToken.trim() !== '') {
                     acc.push(current.deviceToken);
@@ -17,6 +18,7 @@ class FirebaseService {
                 return acc;
             }, []);
             console.log(receiveTokens);
+            if(receiveTokens.length === 0) throw new Error('No token found')
             const payload = {
                 msg: "New Notification"
             }
@@ -37,7 +39,7 @@ class FirebaseService {
             })
             await getMessaging().sendEachForMulticast(message)
         } catch (err) {
-            console.log('Error:', err)
+            console.log('Error:', err.message)
         }
     }    
 }
