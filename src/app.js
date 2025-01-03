@@ -10,6 +10,8 @@ const app = express()
 require('./dbs/firebase.init')
 // require('./dbs/mongo.init')
 require('./dbs/postgres.init')
+require('./dbs/rabbitmq.init')
+
 
 MessageQueue.receive({
     subscribedExchanges: [
