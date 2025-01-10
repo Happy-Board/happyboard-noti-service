@@ -40,6 +40,89 @@ class FirebaseService {
       console.log("Error:", err);
     }
   };
+
+  static notificationToGroup = async (msg = {}) => {
+    try {
+      const { sender, receivers, target, action, metadata = {} } = msg;
+
+      // Kiểm tra nếu không có receivers
+      if (!Array.isArray(receivers) || receivers.length === 0) {
+        console.log("No receivers provided.");
+        return;
+      }
+
+      // Lấy tất cả token của từng user
+      const allTokens = await Promise.all(
+        receivers.map(async (receiverId) => {
+          const tokens = await findTokenDeviceByUserId(receiverId);
+          return tokens.reduce((acc, current) => {
+            if (current.deviceToken.trim() !== "") {
+              acc.push({
+                receiverId,
+                token: current.deviceToken,
+              });
+            }
+            return acc;
+          }, []);
+        })
+      );
+
+      // Gom tất cả token lại thành một mảng
+      const flattenedTokens = allTokens.flat();
+      console.log("Flattened Tokens:", flattenedTokens);
+
+      // Nhóm token theo user để gửi thông báo
+      const groupedTokens = {};
+      flattenedTokens.forEach(({ receiverId, token }) => {
+        if (!groupedTokens[receiverId]) {
+          groupedTokens[receiverId] = [];
+        }
+        groupedTokens[receiverId].push(token);
+      });
+
+      // Xử lý từng user và gửi thông báo
+      await Promise.all(
+        receivers.map(async (receiverId) => {
+          const tokens = groupedTokens[receiverId] || [];
+
+          // Dữ liệu thông báo
+          const payload = {
+            msg: "New Notification for Poll Expire",
+          };
+          const type = codeNotification[target][action];
+          const message = {
+            notification: {
+              title: type,
+              body: JSON.stringify(payload),
+            },
+            tokens,
+          };
+
+          // Lưu thông báo vào database
+          await NotificationService.createNotification({
+            type,
+            from: sender,
+            to: receiverId,
+            target: metadata?.targetId,
+          });
+
+          // Nếu có token, gửi thông báo qua Firebase
+          if (tokens.length > 0) {
+            await getMessaging().sendEachForMulticast(message);
+            console.log(`Notification sent to user ${receiverId}`);
+          } else {
+            console.log(
+              `No tokens for user ${receiverId}, notification saved to database only.`
+            );
+          }
+        })
+      );
+
+      console.log("All notifications processed successfully.");
+    } catch (err) {
+      console.error("Error sending group notifications:", err);
+    }
+  };
 }
 
 module.exports = FirebaseService;
