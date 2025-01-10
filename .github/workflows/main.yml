@@ -11,6 +11,17 @@ jobs:
     steps:
       - name: Checkout source
         uses: actions/checkout@v4
+      - name: Create .env file
+        run: |
+            echo "NODE_ENV=${{secrets.NODE_ENV}}" >> .env
+            echo "PROD_POSTGRES_HOST=${{secrets.PROD_POSTGRES_HOST}}" >> .env
+            echo "PROD_POSTGRES_USER=${{secrets.PROD_POSTGRES_USER}}" >> .env
+            echo "PROD_POSTGRES_PW=${{secrets.PROD_POSTGRES_PW}}" >> .env
+            echo "PROD_POSTGRES_DB=${{secrets.PROD_POSTGRES_DB}}" >> .env
+            echo "PROD_POSTGRES_PORT=${{secrets.PROD_POSTGRES_PORT}}" >> .env
+            echo "PROD_RMQ_USER=${{secrets.PROD_RMQ_USER}}" >> .env
+            echo "PROD_RMQ_PW=${{secrets.PROD_RMQ_PW}}" >> .env
+            echo "PROD_RMQ_HOST=${{secrets.PROD_RMQ_HOST}}" >> .env
       - name: Login to docker hub
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}       
       - name: Build docker image
