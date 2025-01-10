@@ -17,13 +17,17 @@ jobs:
         run: docker build -t duymt3/happyboard-noti .  
       - name: Publish image to docker hub
         run: docker push duymt3/happyboard-noti:latest
-  # deploy:
-  #   needs: build
-  #   runs-on: cicd-be
-  #   steps:
-  #     - name: Pull image from docker hub
-  #       run: docker pull duymt3/happyboard-noti:latest
-  #     - name: Delete old container
-  #       run: docker rm -f happyboard-noti-container
-  #     - name: Run docker container
-  #       run: docker run -d -it -p 8001:8001 --name happyboard-noti-container duymt3/happyboard-noti:latest
+  deploy:
+    needs: build
+    runs-on: self-hosted
+    steps:
+      - name: Stop old container
+        run: docker stop happyboard-noti-container
+      - name: Remove old container
+        run: docker rm happyboard-noti-container
+      - name: Remove old image
+        run: docker rmi duymt3/happyboard-noti:latest
+      - name: Pull image from docker hub
+        run: docker pull duymt3/happyboard-noti:latest
+      - name: Run docker container
+        run: docker run -d -it -p 8001:8001 --name happyboard-noti-container duymt3/happyboard-noti:latest
