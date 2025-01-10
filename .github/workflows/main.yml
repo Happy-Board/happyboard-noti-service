@@ -21,8 +21,6 @@ jobs:
     needs: build
     runs-on: self-hosted
     steps:
-      - name: Login root user
-        run: sudo su
       - name: Stop old container
         run: docker stop happyboard-noti-container
       - name: Remove old container
