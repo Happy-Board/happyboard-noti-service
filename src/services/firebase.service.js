@@ -8,7 +8,14 @@ const { findTokenDeviceByUserId } = require("../models/repo/token.repo");
 class FirebaseService {
   static notification = async (msg = {}) => {
     try {
-      const { sender, receiver, target, action, metadata = {} } = msg;
+      const {
+        sender,
+        senderName,
+        receiver,
+        target,
+        action,
+        metadata = {},
+      } = msg;
       const tokens = await findTokenDeviceByUserId(receiver);
       let receiveTokens = tokens.reduce((acc, current) => {
         if (current.deviceToken.trim() !== "") {
