@@ -16,15 +16,19 @@ class FirebaseService {
         }
         return acc;
       }, []);
-      console.log("receiveTokens", receiveTokens);
-      const payload = {
-        msg: "New Notification",
-      };
+      const payload = "Thông báo mới!";
       let type = codeNotification[target][action];
+      let title = "";
+      if (type === "NI01")
+        title = `${senderName} đã comment vào một idea của bạn `;
+      if (type === "NI02") title = `${senderName} đã vote cho idea của bạn`;
+      if (type === "NC01")
+        title = `${senderName} đã react cho một comment của bạn`;
+      if (type === "NI03") title = `Bài viết của bạn đã được duyệt`;
       const message = {
         notification: {
-          title: type,
-          body: JSON.stringify(payload),
+          title: title,
+          body: payload,
         },
         tokens: receiveTokens,
       };
@@ -43,7 +47,14 @@ class FirebaseService {
 
   static notificationToGroup = async (msg = {}) => {
     try {
-      const { sender, receivers, target, action, metadata = {} } = msg;
+      const {
+        sender,
+        senderName,
+        receivers,
+        target,
+        action,
+        metadata = {},
+      } = msg;
 
       // Kiểm tra nếu không có receivers
       if (!Array.isArray(receivers) || receivers.length === 0) {
@@ -86,14 +97,14 @@ class FirebaseService {
           const tokens = groupedTokens[receiverId] || [];
 
           // Dữ liệu thông báo
-          const payload = {
-            msg: "New Notification for Poll Expire",
-          };
+          const payload = "Thông báo mới!";
+          if (type === "PE01")
+            title = `Thăm dò ý kiến của ${senderName} sắp hết hạn`;
           const type = codeNotification[target][action];
           const message = {
             notification: {
-              title: type,
-              body: JSON.stringify(payload),
+              title: title,
+              body: payload,
             },
             tokens,
           };
