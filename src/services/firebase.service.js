@@ -32,6 +32,10 @@ class FirebaseService {
       if (type === "NC01")
         title = `${senderName} đã react cho một comment của bạn`;
       if (type === "NI03") title = `Bài viết của bạn đã được duyệt`;
+      if (type === "NI04") title = `Bài viết của bạn đã bị ẩn`;
+      // if (type === "NG01") title = `Bài viết của bạn đã bị ẩn`;
+      
+
       const message = {
         notification: {
           title: title,
@@ -39,12 +43,13 @@ class FirebaseService {
         },
         tokens: receiveTokens,
       };
-      await NotificationService.createNotification({
-        type,
+      const notification = await NotificationService.createNotification({
+        type: type,
         from: sender,
         to: receiver,
         target: metadata?.targetId,
       });
+      console.log("notifications: ", notification);
 
       await getMessaging().sendEachForMulticast(message);
     } catch (err) {

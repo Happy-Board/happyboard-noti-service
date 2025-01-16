@@ -3,7 +3,7 @@ const codeNotification = {
     comment: "NI01",
     up: "NI02", // up vote,
     down: "NI02",
-    publish: "NI03",
+    release: "NI03",
     hide: "NI04",
   },
   comment: {
